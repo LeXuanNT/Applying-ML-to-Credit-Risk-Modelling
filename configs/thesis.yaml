@@ -1,0 +1,39 @@
+# Experimental protocol of the thesis (final version, v3).
+# This file documents the settings; the scripts currently define the same values as constants
+# (src/creditscore/protocol_v3.py, src/creditscore/data.py, scripts/*.py). Change both together.
+data:
+  file: data/hmeq.csv
+  sha256: dfdbc2b7cdf728a15b53e323cde6127995715dfa6b178bd3c1e3d9916d0367aa
+  target: BAD                     # 1 = default or seriously delinquent (observed outcome)
+  features: [LOAN, MORTDUE, VALUE, REASON, JOB, YOJ, DEROG, DELINQ, CLAGE, NINQ, CLNO, DEBTINC]
+split:
+  method: stratified random       # HMEQ has no dates, so no out-of-time test
+  train: 0.70
+  valid: 0.15
+  test: 0.15
+  random_state: 42
+missing_data:
+  indicator_test: logistic regression P(BAD=1) ~ M_j on the training part, keep if p < 0.05
+  imputers: [optimized, simple_ind, native]   # chosen by Bayesian Optimization per model
+  joint_imputation_group: [CLAGE, CLNO, DELINQ, NINQ]   # IterativeImputer (single imputation)
+features:
+  yoj_bins: [Unemployed, 0-5, 5-10, 10-20, 20-40]
+  polynomial_degree2: [LOAN, VALUE, CLAGE]
+  woe_iv_min: 0.02                # logistic regression only
+tuning:
+  method: BayesSearchCV (scikit-optimize, GP surrogate, gp_hedge)
+  n_iter: 50
+  cv: StratifiedKFold(10, shuffle=True, random_state=42)
+  scoring: f1
+  samplers: [smote, adasyn, smote_tomek, smote_enn]   # imputed branch
+  native_nan_branch: {models: [XGB, LGBM], budget_share: 0.3, imbalance: class weights}
+  smoke_test: {n_iter: 4, cv: 3}  # python scripts/run_v3.py --fast (not for reporting)
+models: [LR, DT, RF, XGB, LGBM, SVM, MLP, GNB, KNN]
+selection:
+  step0: exact per-variable contributions required (LR, GNB, DT, RF, XGB, LGBM)
+  step1: DeLong test vs best AUC on validation, alpha = 0.05
+  step2: average rank of AUC, KS, PR-AUC, Brier (Platt on training OOF), MCC
+final_model:
+  refit_on: train + valid
+  calibration: Platt on 10-fold out-of-fold raw margins of train + valid
+  decision_bands: {approve_below: 0.10, decline_from: 0.50}   # illustrative policy thresholds

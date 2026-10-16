@@ -1,0 +1,18 @@
+# Exact versions used to produce the thesis results (Python 3.11).
+# Saved models (models/champion.joblib) must be loaded with the same scikit-learn / LightGBM versions.
+numpy==2.4.4
+pandas==3.0.2
+scipy==1.17.1
+scikit-learn==1.8.0
+lightgbm==4.7.0
+xgboost==3.2.0
+imbalanced-learn==0.14.2
+scikit-optimize==0.10.2
+shap==0.51.0
+statsmodels==0.15.0
+matplotlib==3.10.9
+seaborn==0.13.2
+joblib==1.5.3
+streamlit==1.64.0
+altair==6.3.0
+pytest==9.1.1

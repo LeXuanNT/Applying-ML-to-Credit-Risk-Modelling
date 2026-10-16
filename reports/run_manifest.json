@@ -1,0 +1,56 @@
+{
+  "data_file": "data/hmeq.csv",
+  "data_sha256": "dfdbc2b7cdf728a15b53e323cde6127995715dfa6b178bd3c1e3d9916d0367aa",
+  "python": "3.11.15",
+  "platform": "(ghi lại khi chạy)",
+  "packages": {
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.2.0",
+    "imbalanced-learn": "0.14.2",
+    "scikit-optimize": "0.10.2",
+    "shap": "0.51.0",
+    "statsmodels": "0.15.0"
+  },
+  "checks": {
+    "columns_match": true,
+    "n_rows": 5960,
+    "n_duplicates": 0,
+    "bad_values": [
+      0,
+      1
+    ],
+    "bad_rate": 0.1995,
+    "reason_levels": [
+      "DebtCon",
+      "HomeImp"
+    ],
+    "job_levels": [
+      "Mgr",
+      "Office",
+      "Other",
+      "ProfExe",
+      "Sales",
+      "Self"
+    ],
+    "negative_numeric": {},
+    "missing_share": {
+      "DEBTINC": 0.2126,
+      "DEROG": 0.1188,
+      "DELINQ": 0.0973,
+      "MORTDUE": 0.0869,
+      "YOJ": 0.0864,
+      "NINQ": 0.0856,
+      "CLAGE": 0.0517,
+      "JOB": 0.0468,
+      "REASON": 0.0423,
+      "CLNO": 0.0372,
+      "VALUE": 0.0188,
+      "LOAN": 0.0,
+      "BAD": 0.0
+    }
+  }
+}
