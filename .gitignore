@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Large or regenerated artefacts (recreate with scripts/run_v3.py and scripts/finalize_champion.py)
+results/v3/run_v3.joblib
+results/notebook_run/
+figures/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Secrets: never commit tokens or credentials
+.env
+.streamlit/secrets.toml
+results/v3/checkpoints/
+results/v3_fast/
+results/v3_synthetic/
