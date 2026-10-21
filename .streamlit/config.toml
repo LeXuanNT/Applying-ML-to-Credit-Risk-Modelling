@@ -1,0 +1,21 @@
+# Giao diện ứng dụng CreditScore (đọc khi chạy `streamlit run app/streamlit_app.py` từ thư mục gốc repository).
+[theme]
+base = "light"
+primaryColor = "#0F766E"
+backgroundColor = "#F4F6F9"
+secondaryBackgroundColor = "#E9EDF3"
+textColor = "#14213D"
+borderColor = "#D8DEE8"
+baseRadius = "10px"
+font = "Be Vietnam Pro:https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+codeFont = "IBM Plex Mono:https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+
+[theme.sidebar]
+backgroundColor = "#14213D"
+secondaryBackgroundColor = "#22325A"
+textColor = "#E6EBF2"
+primaryColor = "#5EEAD4"
+borderColor = "#2E3F68"
+
+[client]
+toolbarMode = "minimal"
