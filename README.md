@@ -1,8 +1,5 @@
 # Apply ML algorithms in credit scoring modelling
 
-Mã nguồn của luận văn thạc sĩ **"Ứng dụng của học máy trong mô hình rủi ro tín dụng"**, Lê Thị Thanh Xuân,
-ngành Khoa học dữ liệu, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM, 2026.
-
 Bài toán: dự báo xác suất vỡ nợ (PD) trên bộ dữ liệu HMEQ (5,960 khoản vay thế chấp bằng giá trị nhà; BAD = 1 là vỡ nợ).
 So sánh 9 thuật toán; chọn mô hình theo quy trình ba bước (khả năng giải thích → kiểm định DeLong → hạng trung bình);
 mô hình cuối cùng (LightGBM) được hiệu chỉnh Platt, giải thích bằng SHAP và đưa vào ứng dụng hỗ trợ cán bộ tín dụng.
