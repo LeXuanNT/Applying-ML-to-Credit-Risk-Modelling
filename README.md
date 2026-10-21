@@ -15,7 +15,8 @@ data/hmeq.csv              dữ liệu (công khai) + data/README.md (nguồn, c
 src/creditscore/           gói Python: tiền xử lý, mô hình, lựa chọn, hiệu chỉnh, SHAP, kiểm thử
 scripts/                   chạy thí nghiệm từ dòng lệnh
 notebooks/                 01 quy trình đầy đủ · 02 kiểm tra Chương 3 · 03 chạy ứng dụng trên Colab
-app/streamlit_app.py       ứng dụng CreditRisk
+app/                       ứng dụng CreditScore (Streamlit, 3 trang) — xem app/README.md
+.streamlit/config.toml     giao diện ứng dụng (màu, font)
 models/champion.joblib     mô hình cuối cùng (pipeline + LightGBM + hệ số Platt)
 results/v3/, results/missing_study/   kết quả gốc dùng trong luận văn (bảng CSV)
 reports/                   bảng liên kết luận văn → mã, nhật ký sai khác, manifest môi trường
@@ -80,9 +81,12 @@ Trên Colab Free, chạy đầy đủ có thể bị ngắt (không tương tác
   209/209 trong notebook 02); PD trùng `models/champion.joblib` với sai khác ≤ 1e-7. **Chưa kiểm chứng:** chạy lại BO đầy đủ.
 - Sai khác và hạn chế: `reports/deviation_log.md`. Liên kết bảng/hình → mã → artifact: `reports/traceability.md`.
 
-## Ứng dụng CreditRisk
+## Ứng dụng CreditScore
 
-`app/streamlit_app.py` dùng đúng `models/champion.joblib`. Chạy trên Colab bằng notebook 03, hoặc trên máy bằng `streamlit run`.
+`app/streamlit_app.py` dùng đúng `models/champion.joblib` và các bảng trong `results/v3/`. Ba trang: **Quản lý mô hình**
+(chỉ số trên tập kiểm tra, ROC, ma trận nhầm lẫn, biến quan trọng, phân nhóm quyết định), **So sánh mô hình** (quy tắc chọn champion,
+bảng 9 thuật toán) và **Chấm điểm hồ sơ** (PD, SHAP, khuyến nghị cho một hồ sơ). Chạy trên Colab bằng notebook 03, hoặc trên máy bằng
+`streamlit run app/streamlit_app.py` từ thư mục gốc. Chi tiết: `app/README.md`.
 Khuyến nghị Phê duyệt / Xem xét / Từ chối theo ngưỡng 10% và 50% là **minh họa học thuật**, không phải quyết định cấp tín dụng.
 
 **Triển khai công khai (tùy chọn) trên Streamlit Community Cloud:** đăng nhập <https://share.streamlit.io> bằng GitHub →
